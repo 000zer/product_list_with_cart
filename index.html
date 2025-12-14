@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- ===================================
+       META TAGS AND CONFIGURATION
+       =================================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Product list with cart</title>
+
+  <!-- ===================================
+       STYLES
+       =================================== -->
+  <link rel="stylesheet" href="./styles/styles.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;600;700&display=swap">
+</head>
+
+<body>
+  
+  <!-- ===================================
+       MAIN CONTAINER
+       =================================== -->
+  <div class="container">
+    
+    <!-- ===================================
+         PRODUCT SECTION
+         =================================== -->
+    <div class="product">
+      <h1 class="product-title">Desserts</h1>
+      
+      <!-- Product list - dynamically populated -->
+      <div class="product-list" id="product-list">
+        <!-- Product items will be dynamically inserted here -->
+      </div>
+    </div>
+
+    <!-- ===================================
+         SHOPPING CART SECTION
+         =================================== -->
+    <div class="cart">
+      
+      <!-- Cart header with item count -->
+      <h2 class="cart-title">Your Cart (<span id="cart-count">0</span>)</h2>
+      
+      <!-- Empty cart state -->
+      <div class="cart-empty" id="cart-empty">
+        <img src="./assets/images/illustration-empty-cart.svg" alt="Empty Cart Illustration" class="cart-image">
+        <p class="cart-empty-text">Your added items will appear here</p>
+      </div>
+
+      <!-- Cart content (hidden when empty) -->
+      <div class="cart-content" id="cart-content">
+        
+        <!-- Cart items list -->
+        <div class="cart-items" id="cart-items">
+          <!-- Cart items will be dynamically inserted here -->
+        </div>
+        
+        <!-- Order total -->
+        <div class="cart-total" id="cart-total">
+          <span class="total-title">Order Total</span>
+          <span class="total-amount">$0.00</span>
+        </div>
+
+        <!-- Carbon neutral delivery message -->
+        <div class="carbon-neutral">
+          <img src="./assets/images/icon-carbon-neutral.svg" alt="Carbon Neutral Icon" class="carbon-icon">
+          <p class="carbon-text">This is a <span>carbon-neutral</span> delivery</p>
+        </div>
+
+        <!-- Confirm order button -->
+        <button type="button" class="confirm-btn" id="confirm-btn">Confirm Order</button>
+        
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ===================================
+       ATTRIBUTION FOOTER
+       =================================== -->
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener">Frontend Mentor</a>.
+    Coded by <a href="#" target="_blank" rel="noopener">Kostek</a>.
+  </div>
+
+  <!-- ===================================
+       ORDER CONFIRMATION MODAL
+       =================================== -->
+  <div class="confirm-order-modal" id="confirm-order-modal">
+    <div class="confirm-order-container" id="confirm-order-container">
+      <!-- Confirmation content will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <!-- ===================================
+       SCRIPTS
+       =================================== -->
+  <script src="./scripts/main.js"></script>
+
+</body>
+
+</html>

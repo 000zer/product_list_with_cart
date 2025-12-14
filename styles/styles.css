@@ -1,0 +1,676 @@
+/* ===================================
+   IMPORTS AND FONTS
+   =================================== */
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@400;600;700&display=swap');
+
+/* ===================================
+   COLOR VARIABLES
+   =================================== */
+:root {
+    --white: hsl(0, 0%, 100%);
+    --red: hsl(14, 86%, 42%);
+    --red-dark: hsl(14, 86%, 32%);
+    --green: hsl(159, 69%, 38%);
+    --rose-50: hsl(20, 50%, 98%);
+    --rose-100: hsl(13, 31%, 94%);
+    --rose-300: hsl(14, 25%, 72%);
+    --rose-400: hsl(7, 20%, 60%);
+    --rose-500: hsl(12, 20%, 44%);
+    --rose-900: hsl(14, 65%, 9%);
+}
+
+/* ===================================
+   GLOBAL RESET
+   =================================== */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===================================
+   BASE STYLES (MOBILE FIRST)
+   =================================== */
+body {
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding-inline: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-family: 'Red Hat Text', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--rose-900);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--rose-50);
+}
+
+/* ===================================
+   MAIN CONTAINER (MOBILE)
+   =================================== */
+.container {
+    width: 100%;
+    max-width: 80rem;
+    margin: 2rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* ===================================
+   PRODUCT SECTION (MOBILE)
+   =================================== */
+.product {
+    width: 100%;
+}
+
+.product-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    margin-block-end: 2rem;
+}
+
+/* Product grid - mobile: single column */
+.product-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+/* Product card */
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-image-container {
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+    margin-block-end: 1rem;
+    transition: border 0.3s ease;
+}
+
+/* ===================================
+   PRODUCT BUTTONS
+   =================================== */
+/* Add to cart button */
+.product-btn,
+.product-btn-added {
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    transform: translateX(50%);
+    padding: 0.75rem;
+    box-sizing: border-box;
+    border: 1px solid var(--rose-400);
+    background-color: var(--white);
+    border-radius: 999rem;
+    max-width: 10rem;
+    width: 100%;
+    gap: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.product-btn:hover,
+.product-btn:focus {
+    color: var(--red);
+    border-color: var(--red);
+}
+
+/* Button state when item is added */
+.product-btn-added {
+    background: var(--red);
+    border-color: var(--red);
+    justify-content: space-between;
+    color: var(--white);
+}
+
+.btn-icon {
+    width: 1.25rem;
+    height: auto;
+}
+
+/* Quantity increment/decrement buttons */
+.increment-btn,
+.decrement-btn {
+    background: none;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.increment-btn {
+    background: url('../assets/images/icon-increment-quantity.svg') no-repeat center;
+}
+
+.increment-btn:hover,
+.increment-btn:focus {
+    background-image: url('../assets/images/icon-increment-quantity-hover.svg');
+}
+
+.decrement-btn {
+    background: url('../assets/images/icon-decrement-quantity.svg') no-repeat center;
+}
+
+.decrement-btn:hover,
+.decrement-btn:focus {
+    background-image: url('../assets/images/icon-decrement-quantity-hover.svg');
+}
+
+/* ===================================
+   PRODUCT INFORMATION
+   =================================== */
+.product-category {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--rose-500);
+    margin-block: 1.25rem 0.25rem;
+}
+
+.product-name {
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-block-end: 0.25rem;
+}
+
+.product-price {
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--red);
+}
+
+/* ===================================
+   CART SECTION (MOBILE)
+   =================================== */
+.cart {
+    background-color: var(--white);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    width: 100%;
+}
+
+.cart-title {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-block-end: 1.5rem;
+    color: var(--red);
+}
+
+/* ===================================
+   EMPTY CART STATE
+   =================================== */
+.cart-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 2rem 0;
+}
+
+.cart-image {
+    width: 8rem;
+    height: auto;
+}
+
+.cart-empty-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--rose-500);
+}
+
+/* ===================================
+   CART CONTENT (FILLED STATE)
+   =================================== */
+.cart-content {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.cart-items {
+    display: flex;
+    flex-direction: column;
+    margin-block-end: 0.5rem;
+}
+
+/* ===================================
+   CART ITEM STYLES
+   =================================== */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rose-100);
+}
+
+.cart-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cart-item-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.cart-item-price-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-item-quantity {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--red);
+}
+
+.cart-item-price {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--rose-500);
+}
+
+.cart-item-total-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--rose-500);
+}
+
+/* Remove item button */
+.remove-btn {
+    background: url('../assets/images/icon-remove-item.svg') no-repeat center;
+    background-size: contain;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.remove-btn:hover,
+.remove-btn:focus {
+    background-image: url('../assets/images/icon-remove-item-hover.svg');
+}
+
+/* ===================================
+   CART TOTAL
+   =================================== */
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+}
+
+.total-title {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--rose-900);
+}
+
+.total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--rose-900);
+}
+
+/* ===================================
+   CARBON NEUTRAL DELIVERY
+   =================================== */
+.carbon-neutral {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    background: var(--rose-50);
+    padding: 1rem;
+}
+
+.carbon-icon {
+    width: 1.25rem;
+    height: auto;
+}
+
+.carbon-text {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--rose-900);
+}
+
+.carbon-text span {
+    font-weight: 600;
+}
+
+/* ===================================
+   CONFIRM ORDER BUTTON
+   =================================== */
+.confirm-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    border: none;
+    border-radius: 999rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.confirm-btn:hover,
+.confirm-btn:focus {
+    background-color: var(--red-dark);
+}
+
+/* ===================================
+   ORDER CONFIRMATION MODAL
+   =================================== */
+/* Modal overlay */
+.confirm-order-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s linear 0.3s, opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.confirm-order-modal.active {
+    visibility: visible;
+    opacity: 1;
+    transition-delay: 0s;
+}
+
+/* Modal container - mobile: full width at bottom */
+.confirm-order-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 2.5rem 1.5rem;
+    box-sizing: border-box;
+    background: var(--white);
+    border-radius: 0.75rem 0.75rem 0 0;
+    max-height: 90vh;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.confirm-order-modal.active .confirm-order-container {
+    transform: translateY(0);
+}
+
+/* Modal header */
+.confirm-order-header {
+    margin-bottom: 1rem;
+}
+
+.confirm-order-header img {
+    width: 2.5rem;
+    height: auto;
+    margin-block-end: 1rem;
+}
+
+.confirm-order-header h2 {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    color: var(--rose-900);
+    margin-block-end: 0.5rem;
+}
+
+.confirm-order-header p {
+    font-size: 1rem;
+    line-height: 1.3;
+    font-weight: 400;
+    color: var(--rose-500);
+}
+
+/* Modal items list */
+.confirm-order-items {
+    margin-block: 2rem;
+    border-radius: 0.5rem;
+    background: var(--rose-50);
+    padding: 1.5rem;
+}
+
+.confirm-order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--rose-100);
+    padding-block: 1rem;
+}
+
+.confirm-order-item:first-child {
+    padding-block-start: 0;
+}
+
+.confirm-order-item:last-child {
+    border-bottom: none;
+    padding-block-end: 1.5rem;
+}
+
+.confirm-order-item-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.confirm-order-item-left img {
+    width: 3rem;
+    height: auto;
+    border-radius: 0.25rem;
+}
+
+.confirm-order-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.confirm-order-item-details h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--rose-900);
+}
+
+.confirm-order-item-quantity {
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--red);
+}
+
+.confirm-order-item-unit-price {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--rose-500);
+    margin-inline-start: 0.5rem;
+}
+
+.confirm-order-item-total {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--rose-900);
+}
+
+/* Modal order total */
+.confirm-order-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-start: 1.5rem;
+}
+
+.confirm-order-total-label {
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--rose-900);
+}
+
+.confirm-order-total-amount {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--rose-900);
+}
+
+/* Start new order button */
+.new-order-btn {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    background-color: var(--red);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    border: none;
+    border-radius: 999rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-block-start: 1.5rem;
+}
+
+.new-order-btn:hover,
+.new-order-btn:focus {
+    background-color: var(--red-dark);
+}
+
+/* ===================================
+   FOOTER / ATTRIBUTION
+   =================================== */
+.attribution {
+    font-size: 0.75rem;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.attribution a {
+    color: var(--rose-300);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - TABLET
+   =================================== */
+@media (min-width: 35rem) {
+    /* Product grid: two columns */
+    .product-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Modal: centered with max-width */
+    .confirm-order-modal {
+        align-items: center;
+    }
+
+    .confirm-order-container {
+        max-width: 37rem;
+        border-radius: 0.75rem;
+    }
+
+    .confirm-order-header p {
+        font-size: 1rem;
+    }
+
+    .confirm-order-header img {
+        width: 3rem;
+        margin-block-end: 1.5rem;
+    }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - LARGE TABLET
+   =================================== */
+@media (min-width: 48rem) {
+    .container {
+        margin: 3rem auto;
+        gap: 2rem;
+    }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - DESKTOP
+   =================================== */
+@media (min-width: 59.375rem) {
+    /* Layout: side-by-side products and cart */
+    .container {
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+        margin: 5.5rem auto;
+    }
+
+    .product {
+        min-width: 38rem;
+    }
+
+    /* Product grid: three columns */
+    .product-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Sticky cart on desktop */
+    .cart {
+        max-width: 22rem;
+        position: sticky;
+        top: 2rem;
+    }
+}
+
+/* ===================================
+   RESPONSIVE DESIGN - LARGE DESKTOP
+   =================================== */
+@media (min-width: 75rem) {
+    .product {
+        min-width: 43.75rem;
+    }
+}
